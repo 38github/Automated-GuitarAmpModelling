@@ -110,7 +110,7 @@ def init_model(save_path, args):
         if args.model == 'SimpleRNN':
             from CoreAudioML.networks import SimpleRNN
             network = SimpleRNN(input_size=args.input_size, unit_type=args.unit_type, hidden_size=args.hidden_size,
-                                            output_size=args.output_size, skip=args.skip_con)
+                                            output_size=args.output_size, skip=args.skip_con, num_layers=args.num_layers)
         elif args.model == 'GatedConvNet':
             from CoreAudioML.networks import GatedConvNet
             network = GatedConvNet(channels=args.hidden_size, blocks=args.num_blocks,
