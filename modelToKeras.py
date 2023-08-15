@@ -21,7 +21,6 @@ if __name__ == "__main__":
             device = config_data['device']
             unit_type = config_data['unit_type']
             hidden_size = config_data['hidden_size']
-            num_layers = config_data['num_layers'] # NO IDEA IF THIS MAKES A DIFFERENCE
             skip = config_data['skip_con']
             metadata = config_data['metadata']
 
@@ -59,7 +58,6 @@ if __name__ == "__main__":
             input_size = model_data['model_data']['input_size']
             skip = int(model_data['model_data']['skip']) # How many input elements are skipped
             hidden_size = model_data['model_data']['hidden_size']
-            num_layers = model_data['model_data']['num_layers'] # NO IDEA IF THIS MAKES A DIFFERENCE
             output_size = model_data['model_data']['output_size']
             bias_fl = bool(model_data['model_data']['bias_fl'])
             WVals = np.array(model_data['state_dict']['rec.weight_ih_l0'])
@@ -84,7 +82,7 @@ if __name__ == "__main__":
         #print("-- Adding %s..." % "rec.bias_ih_l0, rec.bias_hh_l0 / BVals")
         BVals = (bias_ih_l0 + bias_hh_l0)
         lstm_weights.append(BVals) # BVals is (hidden_size*4, )
-        lstm_layer = keras.layers.LSTM(hidden_size, num_layers, activation=None, weights=lstm_weights, return_sequences=True, recurrent_activation=None, use_bias=bias_fl, unit_forget_bias=False) # ADDED num_layers.
+        lstm_layer = keras.layers.LSTM(hidden_size, activation=None, weights=lstm_weights, return_sequences=True, recurrent_activation=None, use_bias=bias_fl, unit_forget_bias=False)
         model.add(lstm_layer)
     elif unit_type == "GRU":
         gru_weights = []
