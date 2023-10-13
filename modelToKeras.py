@@ -20,6 +20,7 @@ if __name__ == "__main__":
             config_data = json.load(json_file)
             device = config_data['device']
             unit_type = config_data['unit_type']
+            num_layers = config_data['num_layers']
             hidden_size = config_data['hidden_size']
             skip = config_data['skip_con']
             metadata = config_data['metadata']
