@@ -82,7 +82,7 @@ if __name__ == "__main__":
         #print("-- Adding %s..." % "rec.bias_ih_l0, rec.bias_hh_l0 / BVals")
         BVals = (bias_ih_l0 + bias_hh_l0)
         lstm_weights.append(BVals) # BVals is (hidden_size*4, )
-        lstm_layer = keras.layers.LSTM(hidden_size, activation=None, weights=lstm_weights, return_sequences=True, recurrent_activation=None, use_bias=bias_fl, unit_forget_bias=False)
+        lstm_layer = keras.layers.LSTM(hidden_size, num_layers, activation=None, weights=lstm_weights, return_sequences=True, recurrent_activation=None, use_bias=bias_fl, unit_forget_bias=False)
         model.add(lstm_layer)
     elif unit_type == "GRU":
         gru_weights = []
